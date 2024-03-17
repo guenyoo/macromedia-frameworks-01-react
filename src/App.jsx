@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 function App() {
   const [text, setText] = useState('This is the original Text');
@@ -8,7 +7,7 @@ function App() {
   }
 
   return (
-    <>
+    <main className="grid place-items-center place-content-center h-screen">
       <p className={text.includes('original') ? 'text-slate-900' : 'text-red-600'}>
         {text}
       </p>
@@ -18,7 +17,7 @@ function App() {
       >
         Change Text and Color
       </button>
-    </>
+    </main>
   )
 }
 
