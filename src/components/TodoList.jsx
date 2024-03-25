@@ -15,6 +15,10 @@ const TodoList = ({ todos }) => {
     setInputText(e.target.value);
   };
 
+  const onKeyDownHandler = (e) => {
+    e.key === 'Enter' && addTodo(inputText);
+  };
+
   return (
     <>
       <section className="grid gap-3">
@@ -27,6 +31,7 @@ const TodoList = ({ todos }) => {
           placeholder="Nächstes Todo?"
           value={inputText}
           onChange={changeInputText}
+          onKeyDown={onKeyDownHandler}
         />
         <button
           className={clsx('p-3 rounded  shadow cursor-pointer', {
@@ -44,6 +49,7 @@ const TodoList = ({ todos }) => {
       </section>
       <section className="grid gap-3">
         <h3 className="text-2xl">Open ToDo's</h3>
+        {openTodos.length === 0 && 'Keine Offenen Todos'}
         {openTodos.map((todo) => (
           <Todo
             key={todo.id}
@@ -58,6 +64,7 @@ const TodoList = ({ todos }) => {
 
       <section className="grid gap-3">
         <h3 className="text-2xl">Completed ToDo's</h3>
+        {completedTodos.length === 0 && 'Keine Abgeschlossenen Todos'}
         {completedTodos.map((todo) => (
           <Todo
             key={todo.id}
