@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useTodos = () => {
   const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -14,6 +14,10 @@ const useTodos = () => {
   const openTodos = stateTodos.filter((todo) => !todo.completed);
   const completedTodos = stateTodos.filter((todo) => todo.completed);
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(stateTodos));
+  }, [stateTodos]);
+
   const changeTodoState = (id) => {
     const todosToChange = stateTodos.map((todo) => {
       if (todo.id === id) {
@@ -24,7 +28,26 @@ const useTodos = () => {
     setStateTodos(todosToChange);
   };
 
-  return [openTodos, completedTodos, changeTodoState];
+  const addTodo = (name) => {
+    const newTodos = [
+      ...stateTodos,
+      { id: window.crypto.randomUUID(), name, completed: false },
+    ];
+    setStateTodos(newTodos);
+  };
+
+  /**
+   * Diese Funktion iteriert über stateTodos und filtert das Todo
+   * mit der entsprechenden ID heraus und ersetzt stateTodos ohne
+   * das unerwünschte Todo
+   * @param {string} id
+   */
+  const removeTodo = (id) => {
+    const remainingTodos = stateTodos.filter((todo) => todo.id !== id);
+    setStateTodos(remainingTodos);
+  };
+
+  return [openTodos, completedTodos, changeTodoState, addTodo, removeTodo];
 };
 
 export { useTodos };

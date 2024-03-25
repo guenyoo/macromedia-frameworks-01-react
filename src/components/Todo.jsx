@@ -11,8 +11,12 @@ const Todo = (props) => {
         defaultChecked={props.completed}
         onChange={() => props.changeHandler(props.id)}
       />
-      <label htmlFor={props.id}>{props.name}</label>
-      <ArchiveBoxXMarkIcon onClick={console.log} className="w-6 h-6 ml-auto" />
+      <label className="cursor-pointer" htmlFor={props.id}>
+        {props.name}
+      </label>
+      <button onClick={() => props.removeTodoHandler(props.id)}>
+        <ArchiveBoxXMarkIcon className="w-6 h-6 ml-auto" />
+      </button>
     </article>
   );
 };
