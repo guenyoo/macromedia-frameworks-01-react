@@ -14,8 +14,11 @@ const Todo = (props) => {
       <label className="cursor-pointer" htmlFor={props.id}>
         {props.name}
       </label>
-      <button onClick={() => props.removeTodoHandler(props.id)}>
-        <ArchiveBoxXMarkIcon className="w-6 h-6 ml-auto" />
+      <button
+        className="group"
+        onClick={() => props.removeTodoHandler(props.id)}
+      >
+        <ArchiveBoxXMarkIcon className="w-6 h-6 ml-auto group-hover:stroke-white group-hover:fill-neutral-600" />
       </button>
     </article>
   );
