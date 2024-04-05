@@ -25,10 +25,11 @@ Im Prinzip alles, was ihr bei mir gelernt habt:
 - Passen von Props
 - Keine Fehler in der Entwickler-Konsole
 
-### Was mir nicht wichtig ist
+### Was mir nicht (so) wichtig ist
 
 - Modernes JavaScript
 - Styling bis in's letzte (es geht hier weniger um CSS, mehr um den Einsatz von Tailwind). Heißt natürlich dürft ihr die App gern hübsch machen und das werde ich auch positiv Berücksichtigen, ist aber kein Ausschlußkriterium für die Bewertung.
+- Semantisches HTML - natürlich schön, wenn ihr drauf achtet, aber auch hier: das ist kein HTML Kurs.
 
 ### Nice to have
 
